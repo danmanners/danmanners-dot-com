@@ -1,0 +1,128 @@
+---
+// Data sourced from the homelab Kubernetes cluster (Talos) via kubectl,
+// plus the two side rigs that live outside the cluster.
+
+type Node = {
+  name: string;
+  arch: "Intel" | "AMD" | "ARM" | "Apple Silicon";
+  cpus: number;
+  ram: number;
+  gpu?: string;
+  role: "control-plane" | "worker";
+};
+
+const clusterNodes: Node[] = [
+  { name: "armstrong", arch: "ARM", cpus: 12, ram: 62, role: "worker" },
+  { name: "cachecow", arch: "Intel", cpus: 20, ram: 94, role: "control-plane" },
+  { name: "intellectual", arch: "Intel", cpus: 28, ram: 94, gpu: "Intel Arc B70 Pro", role: "worker" },
+  { name: "publicforum", arch: "Intel", cpus: 20, ram: 31, role: "worker" },
+  { name: "quantumleap", arch: "Intel", cpus: 12, ram: 94, gpu: "NVIDIA RTX 5090", role: "worker" },
+  { name: "rampage", arch: "AMD", cpus: 16, ram: 62, role: "control-plane" },
+  { name: "segfault", arch: "AMD", cpus: 16, ram: 62, role: "control-plane" },
+  { name: "zephyr", arch: "Intel", cpus: 4, ram: 31, role: "worker" },
+];
+
+const sideRigs = [
+  {
+    name: "M4 Pro Mac Mini",
+    tag: "AI / OpenCode",
+    detail: "Apple M4 Pro · 48 GB unified memory",
+  },
+  {
+    name: "Side AI / Gaming Rig",
+    tag: "Daily Driver",
+    detail: "Linux · AMD Radeon RX 7900 XT · 20 GB VRAM",
+  },
+];
+
+const totalCpus = clusterNodes.reduce((s, n) => s + n.cpus, 0);
+const totalRam = clusterNodes.reduce((s, n) => s + n.ram, 0);
+const totalGpus = clusterNodes.filter((n) => n.gpu).length;
+
+const stats = [
+  { value: totalCpus, label: "CPU Cores", sub: "across 8 nodes" },
+  { value: `${totalRam} GB`, label: "Memory", sub: "cluster-wide" },
+  { value: "1.9 TB", label: "Storage", sub: "Ceph (Rook)" },
+  { value: totalGpus + 1, label: "Discrete GPUs", sub: "incl. side rig" },
+];
+
+const archBadge: Record<Node["arch"], string> = {
+  Intel: "bg-blue-50 text-blue-700 ring-blue-200 dark:bg-blue-500/10 dark:text-blue-300 dark:ring-blue-500/20",
+  AMD: "bg-amber-50 text-amber-700 ring-amber-200 dark:bg-amber-500/10 dark:text-amber-300 dark:ring-amber-500/20",
+  ARM: "bg-purple-50 text-purple-700 ring-purple-200 dark:bg-purple-500/10 dark:text-purple-300 dark:ring-purple-500/20",
+  "Apple Silicon": "bg-slate-100 text-slate-700 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700",
+};
+---
+
+<section class="mt-10">
+  <h2 class="text-xl font-semibold text-slate-900 dark:text-white">The Homelab</h2>
+  <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">
+    A bare-metal Kubernetes cluster on Talos Linux, provisioned with Cluster API, plus a couple of side rigs.
+  </p>
+
+  <!-- Summary stats -->
+  <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+    {
+      stats.map((s) => (
+        <div class="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+          <div class="text-2xl font-bold text-slate-900 dark:text-white">{s.value}</div>
+          <div class="mt-0.5 text-sm font-medium text-slate-700 dark:text-slate-300">{s.label}</div>
+          <div class="text-xs text-slate-400 dark:text-slate-500">{s.sub}</div>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Cluster nodes -->
+  <h3 class="mt-6 mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+    Cluster Nodes
+  </h3>
+  <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      clusterNodes.map((n) => (
+        <div class="flex flex-col rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+          <div class="flex items-center justify-between gap-2">
+            <span class="truncate font-semibold text-slate-900 dark:text-white">{n.name}</span>
+            <span class:list={['shrink-0 rounded-full px-2 py-0.5 text-xs font-medium ring-1', archBadge[n.arch]]}>
+              {n.arch}
+            </span>
+          </div>
+          <div class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+            {n.cpus} cores · {n.ram} GB
+          </div>
+          <div class="mt-1 min-h-[1.25rem] text-xs">
+            {n.gpu ? (
+              <span class="font-medium text-emerald-600 dark:text-emerald-400">{n.gpu}</span>
+            ) : n.role === "control-plane" ? (
+              <span class="text-slate-400 dark:text-slate-500">control-plane</span>
+            ) : (
+              <span class="text-slate-300 dark:text-slate-600">worker</span>
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Side rigs -->
+  <h3 class="mt-6 mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+    Off-Cluster Rigs
+  </h3>
+  <div class="grid gap-3 sm:grid-cols-2">
+    {
+      sideRigs.map((r) => (
+        <div class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-semibold text-slate-900 dark:text-white">{r.name}</span>
+              <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+                {r.tag}
+              </span>
+            </div>
+            <div class="mt-1 text-sm text-slate-600 dark:text-slate-400">{r.detail}</div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

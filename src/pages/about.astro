@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Homelab from '../components/Homelab.astro';
 
 const tech = {
   devops: [
     { name: 'Terraform', href: 'https://www.terraform.io/', img: 'terraform.png' },
-    { name: 'Ansible', href: 'https://www.ansible.com/', img: 'ansible.webp' },
-    { name: 'GitHub Actions', href: 'https://github.com/features/actions', img: 'github-actions.png', mono: true },
+    { name: 'Ansible', href: 'https://www.ansible.com/', img: 'ansible.webp', mono: true },
+    { name: 'GitHub', href: 'https://github.com/', img: 'github.png', mono: true },
+    { name: 'GitHub Actions', href: 'https://github.com/features/actions', img: 'github-actions.png' },
   ],
   containers: [
     { name: 'Kubernetes', href: 'https://kubernetes.io/', img: 'kubernetes.png' },
@@ -19,6 +21,7 @@ const tech = {
   apps: [
     { name: 'Vault', href: 'https://www.vaultproject.io/', img: 'vault.png' },
     { name: 'GitLab', href: 'https://gitlab.com/', img: 'gitlab.png' },
+    { name: 'DataDog', href: 'https://www.datadoghq.com/', img: 'datadog.png' },
     { name: 'LibreNMS', href: 'https://www.librenms.org/', img: 'librenms.png' },
   ],
   os: [
@@ -29,7 +32,6 @@ const tech = {
   ],
   hardware: [
     { name: 'Cisco', href: 'https://www.cisco.com/', img: 'cisco.png' },
-    { name: 'Juniper', href: 'https://www.juniper.net', img: 'juniper.png' },
     { name: 'Edge-Core', href: 'https://www.edge-core.com/', img: 'edge-core.png' },
     { name: 'Meraki', href: 'https://meraki.cisco.com/', img: 'meraki.png' },
     { name: 'Ubiquiti', href: 'https://www.ubnt.com/', img: 'ubnt.png' },
@@ -89,10 +91,12 @@ const sections: [string, TechItem[]][] = [
 
       <h2 class="pt-4 text-xl font-semibold text-slate-900 dark:text-white">What's Dan been working on?</h2>
       <p>
-        These days Dan is focused on AWS Cloud, Kubernetes and cloud-native infrastructure, and DevSecOps. He's been building AI-friendly and agentic workflows into engineering practices, and spending a lot of time mentoring engineers on cloud-native architecture and security. He's an active member of the Kubernetes and platform engineering communities — you'll often find him at KubeCon and FluxCon.
+        These days Dan is focused on AWS Cloud, Kubernetes and cloud-native infrastructure, and DevSecOps. He's been building AI-friendly and agentic workflows into engineering practices, and spending a lot of time mentoring engineers on cloud-native architecture and security. He's an active member of the Kubernetes and platform engineering communities — you'll often find him at KubeCon.
       </p>
       <p>In his personal time, he's been homelabbing with baremetal Kubernetes, Talos, and a growing pile of networking gear.</p>
     </div>
+
+    <Homelab />
 
     <div class="mt-10 space-y-8">
       <h2 class="text-xl font-semibold text-slate-900 dark:text-white">Things to know about Dan</h2>
@@ -115,7 +119,7 @@ const sections: [string, TechItem[]][] = [
             <div class="flex flex-wrap items-center gap-3">
               {items.map((t) => (
                 <a href={t.href} target="_blank" rel="noopener noreferrer" title={t.name}
-                   class="flex h-16 w-24 items-center justify-center rounded-lg border border-slate-200 bg-white p-2 transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+                    class="flex h-20 w-28 items-center justify-center rounded-lg border border-slate-200 bg-white p-3 transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
                   <img src={`/images/${t.img}`} alt={t.name}
                        class:list={['max-h-full max-w-full object-contain', t.mono && 'dark:invert']} loading="lazy" />
                 </a>
