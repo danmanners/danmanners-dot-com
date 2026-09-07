@@ -12,7 +12,7 @@ What if I told you that you could utilize pre-built "Cloud" images from Ubuntu, 
 The _real_ benefit of leveraging the Generic Cloud images is that you can go from "no virtual machine" to "I'm already provisioning things" in a matter of seconds, instead of many minutes. It's genuinely awesome. As you can see from the screenshot below, I've got plenty of Template VMs in my homelab Proxmox Cluster.
 
 <center>
-    <img src="static/images/posts/proxmox-genericcloud/pmx-dashboard.png" alt="Proxmox" style="margin: 20px 0px">
+    <img src="/images/posts/proxmox-genericcloud/pmx-dashboard.png" alt="Proxmox" style="margin: 20px 0px">
 </center>
 
 ## Selecting your Generic Cloud Images, and...what is a Generic Cloud Image?
@@ -153,19 +153,19 @@ Verify that all of the commands above completed successfully, and you're good to
 Back in the Web UI, you can right-click on on the template you've just created and click 'Clone'.
 
 <center>
-    <img src="static/images/posts/proxmox-genericcloud/pmx-cloning.png" alt="Proxmox" style="margin: 20px 0px">
+    <img src="/images/posts/proxmox-genericcloud/pmx-cloning.png" alt="Proxmox" style="margin: 20px 0px">
 </center>
 
 Simply fill out the required fields and click Clone.
 
 <center>
-    <img src="static/images/posts/proxmox-genericcloud/pmx-clone-template.png" alt="Proxmox" style="margin: 20px 0px">
+    <img src="/images/posts/proxmox-genericcloud/pmx-clone-template.png" alt="Proxmox" style="margin: 20px 0px">
 </center>
 
 Once the VM is successfully cloned, you can make any additional changes you may want through the Web UI. Click start, and then open the console. You'll be able to validate that the VM turns on, and you'll never need an ISO!
 
 <center>
-    <img src="static/images/posts/proxmox-genericcloud/pmx-console.png" alt="Proxmox" style="margin: 20px 0px">
+    <img src="/images/posts/proxmox-genericcloud/pmx-console.png" alt="Proxmox" style="margin: 20px 0px">
 </center>
 
 That's it! Now you can repeat the steps above with any of the other Generic Cloud images you want! If you ever want to update/upgrade a given Generic Cloud image, you can re-do the steps above with a new URL for the disk image.

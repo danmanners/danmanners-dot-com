@@ -15,7 +15,7 @@ I'm unfortunately not the first person to come out with a review of the [Turing 
 So while I want to touch on the hardware, I don't want to dive into everything that the other reviewers have already covered. I'd like to help you understand, from my perspective, _why_ the Turing Pi 2 might be one of the most exciting pieces of technology in the past few years, and why it might be my favorite piece of technology in 2022.
 
 <center>
-    <img src="static/images/posts/turingpi2/02-turingpi2.jpg" width="70%" alt="Turing Pi 2" style="margin: 20px 0px; border-radius: 20px;">
+    <img src="/images/posts/turingpi2/02-turingpi2.jpg" width="70%" alt="Turing Pi 2" style="margin: 20px 0px; border-radius: 20px;">
 </center>
 
 ## What is the Turing Pi 2?
@@ -29,7 +29,7 @@ The Turing Pi 2 is a Mini-ITX system board which allows up to **four** compute m
 | mini-PCIe</br>SIM-card slot<br>GPIO 40-pin<br>HDMI | mini-PCIe | 2x SATA III</br>(6Gbps) | 4x USB 3.0 Ports</br>- 2x on Rear IO</br>- 2x on Front-Panel Connector |
 
 <center>
-    <img src="static/images/posts/turingpi2/03-turingpi2-ports.png" alt="Turing Pi 2" style="margin: 20px 0px">
+    <img src="/images/posts/turingpi2/03-turingpi2-ports.png" alt="Turing Pi 2" style="margin: 20px 0px">
 </center>
 
 The Turing Pi 2 has dual-Gigabit Ethernet NICs, and a Realtek switch chip which supports Layer 2+ capabilities<sup>1</sup> as well as LACP<sup>2</sup>. With gigabit speeds on the NIC as well as to each compute module, each node will be able to utilize full gigabit speed, which is a major improvement from the Turing Pi 1 and the Compute Module 3/3+, which was limited to 10/100Mbps full-duplex network speeds.
@@ -64,7 +64,7 @@ Another major benefit of the Turing Pi 2 is that it is absolutely built for hybr
 Internally, my network is _reasonably_ normal. However, I host several of these services directly on the internet. At a high level, this is what my external network setup looks like:
 
 <center>
-    <img src="static/images/posts/turingpi2/04-turingpi2.png" alt="Turing Pi 2" style="margin: 10px 0px">
+    <img src="/images/posts/turingpi2/04-turingpi2.png" alt="Turing Pi 2" style="margin: 10px 0px">
 </center>
 
 While the networking looks a little odd (and is worthy of another discussion entirely), here's what matters:
@@ -86,7 +86,7 @@ curl https://whiteboard.danmanners.com -sI 0.02s user 0.02s system 10% cpu 0.304
 The Turing Pi 2 nodes are the _only_ nodes in my homelab running the Excalidraw (`whiteboard.danmanners.com`) software, and over the internet the latency is as low as around 20ms. That's _kind of awesome_. Even with a reasonably complex network architecture and many hops, there does not appear to be any noticeable latency when accessing the services hosted on the Turing Pi 2 compute nodes. The nodes are snappy, responsive, and meet my needs perfectly.
 
 <center>
-    <img src="static/images/posts/turingpi2/05-turingpi2.jpg" width="70%" alt="Turing Pi 2" style="margin: 20px 0px; border-radius: 20px;">
+    <img src="/images/posts/turingpi2/05-turingpi2.jpg" width="70%" alt="Turing Pi 2" style="margin: 20px 0px; border-radius: 20px;">
 </center>
 
 I've gone through and evaluated an [NGFF (mini-PCIe) to NVMe Adapter with a Samsung 980 NVMe SSD](https://pipci.jeffgeerling.com/cards_m2/sintech-mpcie-m2-adapter.html), and while performance is not what I would normally expect from a Samsung 980 NVMe drive, I don't believe it to be a limitation with the Turing Pi at this point; it's plenty fast enough to act as persistent storage for building `arm64` containers natively! In conjunction with [Tekton CI/CD](https://tekton.dev/) or [buildah](https://buildah.io/) and an NGFF to NVMe adapter for an NVMe SSD, you can even run multi-architecture builds natively on `arm64` and `amd64` nodes respectively and push the final manifest up to a given container registry by leveraging `nodeSelectors` in your build pipeline. While that is not in and of itself a feature of the Turing Pi 2, I've never had an easier time provisioning and managing a multi-node K3s cluster with ARM64 nodes. The single ethernet and power cable make it quite fast to get all four nodes online.
@@ -116,9 +116,9 @@ Turing Pi **did not** financially compensate me for this post; this is 100% beca
 If you're looking to join the Official Turing Pi Discord Server, want to find Turing Pi on Twitter or visit their website, click on the logos below!
 
 <center>
-    <a href="https://discord.com/invite/uNbysyc"><img src="static/images/posts/turingpi2/Discord-Logo-Color.png" width="10%" style="margin: 20px 20px;"></a>
-    <a href="https://twitter.com/turingpi/"><img src="static/images/posts/turingpi2/2021-Twitter-logo-blue.png" width="10%" style="margin: 40px 20px;"></a>
-    <a href="https://turingpi.com/"><img src="static/images/posts/turingpi2/logo-white.svg" width="10%" style="margin: 30px 20px; background-color: #3a3a3a; border-radius: 20px"></a>
+    <a href="https://discord.com/invite/uNbysyc"><img src="/images/posts/turingpi2/Discord-Logo-Color.png" width="10%" style="margin: 20px 20px;"></a>
+    <a href="https://twitter.com/turingpi/"><img src="/images/posts/turingpi2/2021-Twitter-logo-blue.png" width="10%" style="margin: 40px 20px;"></a>
+    <a href="https://turingpi.com/"><img src="/images/posts/turingpi2/logo-white.svg" width="10%" style="margin: 30px 20px; background-color: #3a3a3a; border-radius: 20px"></a>
 </center>
 
 If something I wrote isn't clear, feel free to ask me a question or ask me to update it! You can ping me at [daniel.a.manners@gmail.com](mailto:daniel.a.manners@gmail.com), or tweet me [@damnanners](https://twitter.com/DamNanners).
