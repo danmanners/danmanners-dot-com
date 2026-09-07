@@ -60,7 +60,12 @@ const icon = (name: string) => iconMap[name] || iconMap['fa-globe'];
       <section class="print-break-avoid">
         <h2 class="resume-section-title">Career Profile</h2>
         <div class="space-y-3 text-slate-700 dark:text-slate-300">
-          {r.summary.split('\n').filter((l) => l.trim()).map((para) => <p>{para}</p>)}
+          {r.summary
+            .split(/\n\s*\n/)
+            .filter((para) => para.trim())
+            .map((para) => (
+              <p>{para.replace(/\n/g, ' ').trim()}</p>
+            ))}
         </div>
       </section>
 
@@ -77,7 +82,34 @@ const icon = (name: string) => iconMap[name] || iconMap['fa-globe'];
                   <span class="text-sm text-slate-500 dark:text-slate-400">{job.dates}</span>
                 </div>
                 <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{job.company}</p>
-                <p class="mt-1.5 text-sm text-slate-700 dark:text-slate-300">{job.details}</p>
+                {
+                  (() => {
+                    const lines = job.details
+                      .split('\n')
+                      .map((l) => l.trim())
+                      .filter((l) => l);
+                    const isBulleted = lines.some((l) => l.startsWith('- '));
+                    if (isBulleted) {
+                      return (
+                        <ul class="mt-2 space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
+                          {lines
+                            .filter((l) => l.startsWith('- '))
+                            .map((l) => (
+                              <li class="flex gap-2">
+                                <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-slate-400 dark:bg-slate-500"></span>
+                                <span>{l.replace(/^- /, '')}</span>
+                              </li>
+                            ))}
+                        </ul>
+                      );
+                    }
+                    return (
+                      <p class="mt-1.5 text-sm text-slate-700 dark:text-slate-300">
+                        {lines.join(' ')}
+                      </p>
+                    );
+                  })()
+                }
               </div>
             ))
           }

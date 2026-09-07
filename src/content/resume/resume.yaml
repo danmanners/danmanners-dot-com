@@ -1,6 +1,6 @@
 profile:
   name: "Dan Manners"
-  tagline: "Senior Network Engineer | DevOps Engineer | Solutions Designer"
+  tagline: "Principal Architect, Senior Platform, SRE, DevSecOps, and Network Engineer, Kubernetes Whisperer, and so-called “One Man Army”"
   avatar: "/images/dan.png"
 
 contact:
@@ -46,50 +46,59 @@ interests:
   - "Concerts and Live Events"
 
 skills:
-  - skill: "On-Prem Networking"
-    level: 92
-  - skill: "Python, Django & Flask"
-    level: 68
-  - skill: "Gitlab / Github / Bitbucket"
-    level: 80
-  - skill: "pfSense"
+  - skill: "AWS Cloud"
     level: 95
-  - skill: "Asterisk VoIP"
-    level: 75
-  - skill: "Linux"
+  - skill: "Kubernetes & Cloud-Native Infrastructure"
+    level: 95
+  - skill: "DevSecOps & Cloud Security"
     level: 88
-  - skill: "Automation Tooling"
-    level: 79
-  - skill: "Docker & Kubernetes"
-    level: 73
-  - skill: "Amazon Web Services"
+  - skill: "GitOps, Terraform & Infrastructure as Code"
+    level: 92
+  - skill: "CI/CD & GitHub Actions"
+    level: 92
+  - skill: "Python & Automation Tooling"
+    level: 85
+  - skill: "Linux Systems Administration"
+    level: 92
+  - skill: "Network Architecture & Automation"
     level: 88
-  - skill: "DigitalOcean"
-    level: 84
-  - skill: "Hashicorp Vault"
-    level: 77
-  - skill: "Windows System Administration"
-    level: 58
+  - skill: "AI-Assisted & Agentic Engineering Workflows"
+    level: 80
+  - skill: "Mentorship & Team Leadership"
+    level: 85
 
 summary: |
-  With over a decade in the IT industry, I have been able to use my problem solving
-  abilities, ingenuity, and my knowledge of best-practices to support my clients'
-  goals and the projects we work on.
+  With nearly twenty years in the tech industry, I have been able to use my problem solving
+  abilities, ingenuity, and deep knowledge of best-practices to support my clients' goals
+  and the projects we work on.
 
-  I thrive on tackling new challenges and engineering the best solutions. I am
-  well-versed in automation tooling, cloud and on-prem networking, systems
-  architecture, and SecOps. Additionally, I am experienced in troubleshooting at
-  the hardware, software, and application levels of most systems put in front of me.
+  I am currently focused on AWS Cloud, Kubernetes and cloud-native infrastructure, DevSecOps
+  and security, AI-friendly and agentic engineering workflows, and mentoring engineering
+  teams. I am experienced in designing and operating hyperscale Kubernetes platforms,
+  building secure CI/CD pipelines, and implementing infrastructure as code at global scale.
 
-  I always aim to develop appropriate solutions for the appropriate time frames and
-  within budget. I am always seeking new opportunities to develop cohesive systems
-  which can provide the ideal environments for both developers and their end users.
+  I always aim to develop appropriate solutions for the appropriate time frames and within
+  budget. I am always seeking new opportunities to develop cohesive systems which can
+  provide the ideal environments for both developers and their end users.
 
 experiences:
+  - position: "Principal Architect"
+    dates: "2026 - Present"
+    company: "CentralReach"
+    details: |-
+      - Serving as the organization's dedicated platform and infrastructure engineer, designing, building, and operating AWS cloud-native infrastructure, Kubernetes platforms, CI/CD pipelines, and security controls end-to-end.
+      - Building AI-friendly and agentic workflows into engineering practices to increase developer velocity and operational efficiency.
+      - Mentoring engineers on cloud-native architecture, DevSecOps practices, and security best practices.
   - position: "Senior Site Reliability Engineer"
-    dates: "2021 - Present"
+    dates: "2021 - 2025"
     company: "Cisco"
-    details: "Building, implementing, and supporting cloud infrastructure. Updating and maintaining our on-prem Kubernetes clusters. Always working to improve the customer development workflow experience."
+    details: |-
+      - Designed and implemented hyperscaling Kubernetes on-premises via OpenStack, Cluster API, and Talos Linux to provide elastic compute for secure build environments.
+      - Enabled GitHub Actions in GitHub EMU for all of Cisco Engineering and implemented risk mitigation strategies against supply chain attacks. Developed and maintained a Cisco Hardened GitHub Action Runner container image to secure the runtime environment.
+      - Designed, built, and deployed an SSDF Compliant GitHub Action Workflow Logging solution in less than 45 days to support logging for thousands of GitHub Action Workflows daily.
+      - Built an internal Python library to safely and securely manage GitHub App authentication against GitHub Cloud and dozens of GitHub Enterprise servers for thousands of organizations.
+      - Designed and implemented idempotent infrastructure and services at global scale via Terraform, GitOps, and Kubernetes in AWS. Brought new region infrastructure and service provisioning from several days to 1 hour. Reduced global infrastructure upgrade times in cloud environments from several hours to 30 minutes. Reduced upgrade times for services from 2-4 hours to 10 minutes.
+      - Mentored junior engineers on approaching cloud-native software, solutions, and engineering challenges with a focus on aligning to business values and goals.
   - position: "DevOps Engineer"
     dates: "2020 - 2021"
     company: "Cisco (TEKSystems Contract)"
@@ -110,30 +119,14 @@ experiences:
     dates: "2010 - 2014"
     company: "Production Resource Group"
     details: "Played a key role in maintaining day-to-day functionality of all networked services (asset management platform, Cisco phones, print services, networked storage, facility access control, security system management, day-to-day hardware/software problems, client and project management, etc.) both locally and nationwide."
-  - position: "Systems Administrator Intern"
-    dates: "Summer 2009"
-    company: "Production Resource Group"
-    details: "Performed day-to-day helpdesk support for the US; built and applied Active Directory schema changes."
 
 projects:
-  - title: "CAPCOM @ TOURtech"
-    url: "https://www.tourtech.com"
-    tagline: "Built out a highly scalable platform, primarily around Open Source Software, to allow simultaneous remote management and support to multiple event sites. This includes CCTV cameras, temporary wired and wireless infrastructure, logging and metrics collection, and integration with on-site radio communications. CAPCOM provides the ability for a less-qualified network technician on multiple event sites while a highly-trained remote Network Engineer can oversee simultaneous live events from a single physical location."
-  - title: "EventBuilder @ TOURtech"
-    url: "https://www.tourtech.com"
-    tagline: "Built an easy-to-use web interface to generate TOURtech specific configuration files for the various hardware used by the organization on a per-event basis. This streamlined configuration management by nearly a full day of work per job."
   - title: "Structsure @ BrainGu"
     url: "https://www.structsure.com"
-    tagline: "Compliant Platform-As-A-Service offering simplified deployments of necessary applications for almost any business."
+    tagline: "Compliant Platform-As-A-Service offering simplified deployments of necessary applications for almost any business. Designed the system architecture and automated deployment and updating functionality of the platform."
   - title: "Austin City Limits Music Festival 2015"
     url: "https://www.aclfestival.com/"
     tagline: "Designed the network architecture, deployed, and troubleshot both the production networking and AT&T public Wifi for VIP attendees. Successfully provided internet to 80,000+ wired and wireless clients over two weekends of the music festival including POS, Access Control, CCTV, and attendee wifi."
-  - title: "PRG Los Angeles Facility Move"
-    url: "https://www.prg.com/locations/los-angeles"
-    tagline: "Moved from ~80,000 sqft warehouse to a ~135,000 sqft warehouse; performed a full upgrade of all network infrastructure and upgraded desktop clients for office and warehouse use."
-  - title: "PRG New Jersey Facility Move"
-    url: "https://www.prg.com/locations/secaucus"
-    tagline: "Assisted in merging two company locations from Mt. Vernon, NY and North Bergen, NJ into a single facility in Secaucus, NJ. 130+ employees and 90+ workstations migrated, as well as assisting with testing various core systems (Ethernet integrity, paging systems, video security systems)."
 
 locations:
   - title: "Westchester, NY"

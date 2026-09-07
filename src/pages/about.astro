@@ -3,33 +3,24 @@ import Layout from '../layouts/Layout.astro';
 
 const tech = {
   devops: [
-    { name: 'Ansible', href: 'https://www.ansible.com/', img: 'ansible.webp' },
-    { name: 'Puppet Bolt', href: 'https://puppet.com/docs/bolt/latest/bolt.html', img: 'puppetbolt.png' },
-    { name: 'Jenkins', href: 'https://www.jenkins.io/', img: 'jenkins.png' },
     { name: 'Terraform', href: 'https://www.terraform.io/', img: 'terraform.png' },
+    { name: 'Ansible', href: 'https://www.ansible.com/', img: 'ansible.webp' },
   ],
   containers: [
-    { name: 'Docker', href: 'https://www.docker.com/', img: 'docker.png' },
     { name: 'Kubernetes', href: 'https://kubernetes.io/', img: 'kubernetes.png' },
-    { name: 'Docker Swarm', href: 'https://www.docker.com/', img: 'dockerswarm.png' },
+    { name: 'Docker', href: 'https://www.docker.com/', img: 'docker.png' },
   ],
   cloud: [
-    { name: 'DigitalOcean', href: 'https://www.digitalocean.com/', img: 'digitalocean.png' },
     { name: 'AWS', href: 'https://aws.amazon.com/', img: 'aws.png' },
   ],
   apps: [
-    { name: 'LibreNMS', href: 'https://www.librenms.org/', img: 'librenms.png' },
-    { name: 'FreeIPA', href: 'https://www.freeipa.org/', img: 'freeipa.png' },
     { name: 'Vault', href: 'https://www.vaultproject.io/', img: 'vault.png' },
     { name: 'GitLab', href: 'https://gitlab.com/', img: 'gitlab.png' },
-    { name: 'RocketChat', href: 'https://rocket.chat/', img: 'rocketchat.png' },
-    { name: 'Atlassian', href: 'https://www.atlassian.com/', img: 'atlassian.png' },
+    { name: 'LibreNMS', href: 'https://www.librenms.org/', img: 'librenms.png' },
   ],
   os: [
-    { name: 'CentOS', href: 'https://www.centos.org/', img: 'centos.png' },
     { name: 'Ubuntu', href: 'https://www.ubuntu.com/', img: 'ubuntu-logo.png' },
     { name: 'Amazon Linux', href: 'https://aws.amazon.com/amazon-linux-ami/', img: 'amazonlinux.png' },
-    { name: 'Windows Server', href: 'https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2012-r2/', img: 'winserver2012.png' },
     { name: 'pfSense', href: 'https://www.pfsense.org/', img: 'pfsense.png' },
   ],
   hardware: [
@@ -43,9 +34,9 @@ const tech = {
     { name: 'Ruckus Wireless', href: 'https://www.ruckuswireless.com/', img: 'ruckus.png' },
   ],
   scripting: [
-    { name: 'Bash', href: 'https://en.wikipedia.org/wiki/Bash_(Unix_shell)', img: 'bash.png' },
     { name: 'Python', href: 'https://www.python.org/', img: 'python.png' },
     { name: 'Go', href: 'https://golang.org/', img: 'golang.png' },
+    { name: 'Bash', href: 'https://en.wikipedia.org/wiki/Bash_(Unix_shell)', img: 'bash.png' },
   ],
 };
 
@@ -83,17 +74,20 @@ const sections: [string, TechItem[]][] = [
         Only a few days later, he was fortunate enough to be introduced to <a href="https://www.teksystems.com/" class="link">TEKsystems</a> and was hired as a DevOps Engineer for <a href="https://www.cisco.com/" class="link">Cisco</a>! As a Cisco contractor, he was working on building automation tooling and pipelines to securely deploy and simplify code and package sharing between several internal services and partner locations in zero-trust environments.
       </p>
       <p>
-        Lastly, in May 2021, he was converted to a full time employee. Since then, he's been focusing on building out cloud infrastructure for other internal engineering teams. Being able to provide cloud-native resources allows other teams to more quickly and easily bring their own products or projects to market.
+        In May 2021, he was converted to a full time employee. Over the next several years as a Senior Site Reliability Engineer, Dan designed and implemented hyperscale on-premises Kubernetes via OpenStack, Cluster API, and Talos Linux to provide elastic compute for secure build environments. He enabled GitHub Actions for all of Cisco Engineering, built supply-chain security controls and a hardened runner image, and deployed an SSDF-compliant workflow logging solution in under 45 days. He also designed idempotent, GitOps-driven infrastructure in AWS at global scale — cutting new-region provisioning from days to an hour and service upgrades from hours to minutes — while mentoring junior engineers on cloud-native challenges.
       </p>
       <p>
-        Throughout his career spanning over a decade, Dan has had one constant motto: "Be good, do others good, and don't be a dick." While a bit forward, it translates well to all facets of life.
+        In December 2025, Dan left Cisco and joined <a href="https://www.centralreach.com/" class="link">CentralReach</a> in 2026 as a Principal Architect. There he is the so-called "One Man Army" — the dedicated platform, SRE, DevSecOps, and network engineer for the organization. He designs and operates AWS cloud-native infrastructure and Kubernetes end-to-end, builds AI-friendly and agentic workflows into engineering practices, and mentors the team on security and platform best practices.
+      </p>
+      <p>
+        Throughout his career spanning nearly two decades, Dan has had one constant motto: "Be good, do others good, and don't be a dick." While a bit forward, it translates well to all facets of life.
       </p>
 
       <h2 class="pt-4 text-xl font-semibold text-slate-900 dark:text-white">What's Dan been working on?</h2>
       <p>
-        Recently, Dan's been working on automating infrastructure deployment with Puppet Bolt. In environments where Puppet is already in full swing, building plans with Puppet Bolt over Ansible allows re-use of existing code and logic. Additionally, he's been deploying and utilizing Jenkins, SonarQube, Artifactory, and the Atlassian toolset in zero-trust environments while load balancing it all with HAProxy.
+        These days Dan is focused on AWS Cloud, Kubernetes and cloud-native infrastructure, and DevSecOps. He's been building AI-friendly and agentic workflows into engineering practices, and spending a lot of time mentoring engineers on cloud-native architecture and security. He's an active member of the Kubernetes and platform engineering communities — you'll often find him at KubeCon and FluxCon.
       </p>
-      <p>In his personal time, he's been building out tooling to deploy baremetal Kubernetes with minimal effort.</p>
+      <p>In his personal time, he's been homelabbing with baremetal Kubernetes, Talos, and a growing pile of networking gear.</p>
     </div>
 
     <div class="mt-10 space-y-8">
