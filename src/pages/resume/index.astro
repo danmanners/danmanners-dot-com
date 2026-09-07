@@ -118,19 +118,13 @@ const icon = (name: string) => iconMap[name] || iconMap['fa-globe'];
 
       <!-- Skills -->
       <section class="print-break-avoid">
-        <h2 class="resume-section-title">Skills &amp; Proficiency</h2>
-        <div class="grid gap-x-8 gap-y-3 sm:grid-cols-2">
+        <h2 class="resume-section-title">Skills</h2>
+        <div class="flex flex-wrap gap-2">
           {
             r.skills.map((s) => (
-              <div>
-                <div class="mb-1 flex items-center justify-between text-sm">
-                  <span class="text-slate-700 dark:text-slate-300">{s.skill}</span>
-                  <span class="text-slate-400 dark:text-slate-500">{s.level}%</span>
-                </div>
-                <div class="h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-                  <div class="h-full rounded-full bg-blue-500" style={`width: ${s.level}%`} ></div>
-                </div>
-              </div>
+              <span class="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700 ring-1 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700">
+                {s}
+              </span>
             ))
           }
         </div>
@@ -143,10 +137,14 @@ const icon = (name: string) => iconMap[name] || iconMap['fa-globe'];
           {
             r.projects.map((p) => (
               <div>
-                <a href={p.url} target="_blank" rel="noopener noreferrer"
-                   class="font-semibold text-blue-600 hover:underline dark:text-blue-400">
-                  {p.title}
-                </a>
+                {p.url ? (
+                  <a href={p.url} target="_blank" rel="noopener noreferrer"
+                     class="font-semibold text-blue-600 hover:underline dark:text-blue-400">
+                    {p.title}
+                  </a>
+                ) : (
+                  <span class="font-semibold text-slate-900 dark:text-white">{p.title}</span>
+                )}
                 <p class="mt-1 text-sm text-slate-700 dark:text-slate-300">{p.tagline}</p>
               </div>
             ))

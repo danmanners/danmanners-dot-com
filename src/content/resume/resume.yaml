@@ -46,26 +46,17 @@ interests:
   - "Concerts and Live Events"
 
 skills:
-  - skill: "AWS Cloud"
-    level: 95
-  - skill: "Kubernetes & Cloud-Native Infrastructure"
-    level: 95
-  - skill: "DevSecOps & Cloud Security"
-    level: 88
-  - skill: "GitOps, Terraform & Infrastructure as Code"
-    level: 92
-  - skill: "CI/CD & GitHub Actions"
-    level: 92
-  - skill: "Python & Automation Tooling"
-    level: 85
-  - skill: "Linux Systems Administration"
-    level: 92
-  - skill: "Network Architecture & Automation"
-    level: 88
-  - skill: "AI-Assisted & Agentic Engineering Workflows"
-    level: 80
-  - skill: "Mentorship & Team Leadership"
-    level: 85
+  - "AWS Cloud"
+  - "Kubernetes & Cloud-Native Infrastructure"
+  - "DevSecOps & Cloud Security"
+  - "GitOps, Terraform & Infrastructure as Code"
+  - "CI/CD & GitHub Actions"
+  - "Cluster API, Talos Linux & OpenStack"
+  - "Python & Automation Tooling"
+  - "Linux Systems Administration"
+  - "Network Architecture & Automation"
+  - "AI-Assisted & Agentic Engineering Workflows"
+  - "Mentorship & Team Leadership"
 
 summary: |
   With nearly twenty years in the tech industry, I have been able to use my problem solving
@@ -121,6 +112,9 @@ experiences:
     details: "Played a key role in maintaining day-to-day functionality of all networked services (asset management platform, Cisco phones, print services, networked storage, facility access control, security system management, day-to-day hardware/software problems, client and project management, etc.) both locally and nationwide."
 
 projects:
+  - title: "GitHub Actions @ Cisco"
+    url: ""
+    tagline: "Built truly ephemeral, secure, and hardened GitHub Actions private infrastructure on-premises atop Kubernetes on OpenStack, utilizing Cluster API (CAPI) and Talos Linux (Siderolabs) to provide elastic compute for secure build environments."
   - title: "Structsure @ BrainGu"
     url: "https://www.structsure.com"
     tagline: "Compliant Platform-As-A-Service offering simplified deployments of necessary applications for almost any business. Designed the system architecture and automated deployment and updating functionality of the platform."

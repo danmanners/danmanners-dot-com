@@ -45,12 +45,7 @@ const resume = defineCollection({
       })
     ),
     interests: z.array(z.string()),
-    skills: z.array(
-      z.object({
-        skill: z.string(),
-        level: z.number(),
-      })
-    ),
+    skills: z.array(z.string()),
     summary: z.string(),
     experiences: z.array(
       z.object({
