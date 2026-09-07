@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const tech = {
+  devops: [
+    { name: 'Ansible', href: 'https://www.ansible.com/', img: 'ansible.webp' },
+    { name: 'Puppet Bolt', href: 'https://puppet.com/docs/bolt/latest/bolt.html', img: 'puppetbolt.png' },
+    { name: 'Jenkins', href: 'https://www.jenkins.io/', img: 'jenkins.png' },
+    { name: 'Terraform', href: 'https://www.terraform.io/', img: 'terraform.png' },
+  ],
+  containers: [
+    { name: 'Docker', href: 'https://www.docker.com/', img: 'docker.png' },
+    { name: 'Kubernetes', href: 'https://kubernetes.io/', img: 'kubernetes.png' },
+    { name: 'Docker Swarm', href: 'https://www.docker.com/', img: 'dockerswarm.png' },
+  ],
+  cloud: [
+    { name: 'DigitalOcean', href: 'https://www.digitalocean.com/', img: 'digitalocean.png' },
+    { name: 'AWS', href: 'https://aws.amazon.com/', img: 'aws.png' },
+  ],
+  apps: [
+    { name: 'LibreNMS', href: 'https://www.librenms.org/', img: 'librenms.png' },
+    { name: 'FreeIPA', href: 'https://www.freeipa.org/', img: 'freeipa.png' },
+    { name: 'Vault', href: 'https://www.vaultproject.io/', img: 'vault.png' },
+    { name: 'GitLab', href: 'https://gitlab.com/', img: 'gitlab.png' },
+    { name: 'RocketChat', href: 'https://rocket.chat/', img: 'rocketchat.png' },
+    { name: 'Atlassian', href: 'https://www.atlassian.com/', img: 'atlassian.png' },
+  ],
+  os: [
+    { name: 'CentOS', href: 'https://www.centos.org/', img: 'centos.png' },
+    { name: 'Ubuntu', href: 'https://www.ubuntu.com/', img: 'ubuntu-logo.png' },
+    { name: 'Amazon Linux', href: 'https://aws.amazon.com/amazon-linux-ami/', img: 'amazonlinux.png' },
+    { name: 'Windows Server', href: 'https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2012-r2/', img: 'winserver2012.png' },
+    { name: 'pfSense', href: 'https://www.pfsense.org/', img: 'pfsense.png' },
+  ],
+  hardware: [
+    { name: 'Cisco', href: 'https://www.cisco.com/', img: 'cisco.png' },
+    { name: 'Juniper', href: 'https://www.juniper.net', img: 'juniper.png' },
+    { name: 'Edge-Core', href: 'https://www.edge-core.com/', img: 'edge-core.png' },
+    { name: 'Meraki', href: 'https://meraki.cisco.com/', img: 'meraki.png' },
+    { name: 'Ubiquiti', href: 'https://www.ubnt.com/', img: 'ubnt.png' },
+    { name: 'Mikrotik', href: 'https://mikrotik.com/', img: 'mikrotik.svg' },
+    { name: 'Synology', href: 'https://www.synology.com/', img: 'synology.png' },
+    { name: 'Ruckus Wireless', href: 'https://www.ruckuswireless.com/', img: 'ruckus.png' },
+  ],
+  scripting: [
+    { name: 'Bash', href: 'https://en.wikipedia.org/wiki/Bash_(Unix_shell)', img: 'bash.png' },
+    { name: 'Python', href: 'https://www.python.org/', img: 'python.png' },
+    { name: 'Go', href: 'https://golang.org/', img: 'golang.png' },
+  ],
+};
+
+type TechItem = { name: string; href: string; img: string };
+const sections: [string, TechItem[]][] = [
+  ['DevOps Automation & CI/CD', tech.devops],
+  ['Containerization & Orchestration', tech.containers],
+  ['Cloud Providers', tech.cloud],
+  ['Applications & Services', tech.apps],
+  ['Operating Systems', tech.os],
+  ['Hardware', tech.hardware],
+  ['Programming / Scripting', tech.scripting],
+];
+---
+
+<Layout title="About">
+  <article class="prose-slate max-w-none">
+    <h1 class="mb-6 text-3xl font-bold text-slate-900 dark:text-white">About Me</h1>
+
+    <div class="space-y-4 text-slate-700 dark:text-slate-300">
+      <h2 class="text-xl font-semibold text-slate-900 dark:text-white">Who the heck is Dan Manners</h2>
+      <p>
+        Dan Manners grew up in Westchester, NY. Between 2010 and 2014, he worked for <a href="https://www.prg.com/" class="link">Production Resource Group</a> as a Systems Administrator I/II locally in their New Jersey, New York, and Los Angeles Offices. While there, he focused on learning and understanding how users need to operate and how to optimize workflows and backend resources to better assist his end users. In addition to this, he learned a great deal about Cisco VoIP, Layer 3 Networking, Desktop and Server deployment, and how to translate <strong>"Beep-Boop"</strong> to human-speak. While this may sound silly, this allowed Dan to clearly communicate with many of the higher-level executives and managers.
+      </p>
+      <p>
+        In mid 2014, he left PRG for <a href="https://www.tourtech.com/" class="link">TOURtech</a>. TOURtech offered a new array of challenges, and he went from supporting several smaller offices and (roughly) 3,000 global users to temporarily supporting networks for events like music festivals, concert tours, corporate tradeshows, and product launches that could handle upwards of <em><strong>30,000</strong></em> wired and wireless clients. The networks would be deployed for services like Point-of-Sales systems, Access Control, CCTV, Guest Services, Sponsorship booths, and public and private wifi.
+      </p>
+      <p>
+        At the beginning of 2017, Dan began working with <a href="https://braingu.com" class="link">BrainGu</a>. While it may be considered a radical shift from his experience with PRG and TOURtech, this was a brand new style of challenge. Most of what he has worked on is either under strict NDA or classified, but what he <strong>CAN</strong> talk about is <a href="https://structsure.com" class="link">Structsure</a>. During his work on Structsure, he primarily focused on learning what good and bad DevOps workflows look like.
+      </p>
+      <p>
+        Then in March of 2019, he re-joined TOURtech as the Senior Network Engineer, specializing in systems and design. He worked on designing and rolling out comprehensive monitoring tools, automated tooling to allow rapid configuration and deployment, and made sure that every TOURtech network ties its management back to the home office for remote support and management. During his time with TOURtech the second time around, his big claim-to-fame was designing the network architecture for a cellular carrier's 4G to WiFi offload for roughly 11,000 concurrent devices at a major sporting event. Unfortunately a year to the day after joining again mid-COVID-19 crisis, he was laid off.
+      </p>
+      <p>
+        Only a few days later, he was fortunate enough to be introduced to <a href="https://www.teksystems.com/" class="link">TEKsystems</a> and was hired as a DevOps Engineer for <a href="https://www.cisco.com/" class="link">Cisco</a>! As a Cisco contractor, he was working on building automation tooling and pipelines to securely deploy and simplify code and package sharing between several internal services and partner locations in zero-trust environments.
+      </p>
+      <p>
+        Lastly, in May 2021, he was converted to a full time employee. Since then, he's been focusing on building out cloud infrastructure for other internal engineering teams. Being able to provide cloud-native resources allows other teams to more quickly and easily bring their own products or projects to market.
+      </p>
+      <p>
+        Throughout his career spanning over a decade, Dan has had one constant motto: "Be good, do others good, and don't be a dick." While a bit forward, it translates well to all facets of life.
+      </p>
+
+      <h2 class="pt-4 text-xl font-semibold text-slate-900 dark:text-white">What's Dan been working on?</h2>
+      <p>
+        Recently, Dan's been working on automating infrastructure deployment with Puppet Bolt. In environments where Puppet is already in full swing, building plans with Puppet Bolt over Ansible allows re-use of existing code and logic. Additionally, he's been deploying and utilizing Jenkins, SonarQube, Artifactory, and the Atlassian toolset in zero-trust environments while load balancing it all with HAProxy.
+      </p>
+      <p>In his personal time, he's been building out tooling to deploy baremetal Kubernetes with minimal effort.</p>
+    </div>
+
+    <div class="mt-10 space-y-8">
+      <h2 class="text-xl font-semibold text-slate-900 dark:text-white">Things to know about Dan</h2>
+      <div class="rounded-xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+        <ul class="grid grid-cols-1 gap-2 text-sm text-slate-700 sm:grid-cols-2 dark:text-slate-300">
+          <li><strong>Hometown:</strong> Westchester, NY</li>
+          <li><strong>Dog:</strong> Marcel (Lab/Shepard/Rottweiler mutt, b. ~2014)</li>
+          <li><strong>Food:</strong> Japanese, French, American</li>
+          <li><strong>Siblings:</strong> 2</li>
+          <li><strong>Favorite Vacation:</strong> Tokyo, Japan</li>
+        </ul>
+      </div>
+
+      <h2 class="pt-4 text-xl font-semibold text-slate-900 dark:text-white">Technologies &amp; Tools</h2>
+
+      <div class="grid gap-8">
+        {sections.map(([title, items]) => (
+          <div>
+            <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">{title}</h3>
+            <div class="flex flex-wrap items-center gap-3">
+              {items.map((t) => (
+                <a href={t.href} target="_blank" rel="noopener noreferrer" title={t.name}
+                   class="flex h-16 w-24 items-center justify-center rounded-lg border border-slate-200 bg-white p-2 transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+                  <img src={`/images/${t.img}`} alt={t.name} class="max-h-full max-w-full object-contain" loading="lazy" />
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,146 @@
+profile:
+  name: "Dan Manners"
+  tagline: "Senior Network Engineer | DevOps Engineer | Solutions Designer"
+  avatar: "/images/dan.png"
+
+contact:
+  - class: "website"
+    icon: "fa-globe"
+    url: "https://danmanners.com"
+    title: "danmanners.com"
+  - class: "email"
+    icon: "fa-envelope"
+    url: "mailto:daniel.a.manners@gmail.com"
+    title: "daniel.a.manners@gmail.com"
+  - class: "phone"
+    icon: "fa-phone"
+    url: "tel:+19147155428"
+    title: "+19147155428"
+  - class: "sms"
+    icon: "fa-comments"
+    url: "sms:+19147155428"
+    title: "+19147155428"
+  - class: "linkedin"
+    icon: "fa-linkedin"
+    url: "https://linkedin.com/in/danielmanners"
+    title: "linkedin.com/in/danielmanners"
+  - class: "github"
+    icon: "fa-github"
+    url: "https://github.com/danmanners"
+    title: "github.com/danmanners"
+
+education:
+  - college: "Hartford University"
+    dates: "2009 - 2010"
+
+languages:
+  - language: "English"
+    level: "Native"
+
+interests:
+  - "Music"
+  - "Gaming"
+  - "Learning"
+  - "Homelabbing"
+  - "Food & Cooking"
+  - "Concerts and Live Events"
+
+skills:
+  - skill: "On-Prem Networking"
+    level: 92
+  - skill: "Python, Django & Flask"
+    level: 68
+  - skill: "Gitlab / Github / Bitbucket"
+    level: 80
+  - skill: "pfSense"
+    level: 95
+  - skill: "Asterisk VoIP"
+    level: 75
+  - skill: "Linux"
+    level: 88
+  - skill: "Automation Tooling"
+    level: 79
+  - skill: "Docker & Kubernetes"
+    level: 73
+  - skill: "Amazon Web Services"
+    level: 88
+  - skill: "DigitalOcean"
+    level: 84
+  - skill: "Hashicorp Vault"
+    level: 77
+  - skill: "Windows System Administration"
+    level: 58
+
+summary: |
+  With over a decade in the IT industry, I have been able to use my problem solving
+  abilities, ingenuity, and my knowledge of best-practices to support my clients'
+  goals and the projects we work on.
+
+  I thrive on tackling new challenges and engineering the best solutions. I am
+  well-versed in automation tooling, cloud and on-prem networking, systems
+  architecture, and SecOps. Additionally, I am experienced in troubleshooting at
+  the hardware, software, and application levels of most systems put in front of me.
+
+  I always aim to develop appropriate solutions for the appropriate time frames and
+  within budget. I am always seeking new opportunities to develop cohesive systems
+  which can provide the ideal environments for both developers and their end users.
+
+experiences:
+  - position: "Senior Site Reliability Engineer"
+    dates: "2021 - Present"
+    company: "Cisco"
+    details: "Building, implementing, and supporting cloud infrastructure. Updating and maintaining our on-prem Kubernetes clusters. Always working to improve the customer development workflow experience."
+  - position: "DevOps Engineer"
+    dates: "2020 - 2021"
+    company: "Cisco (TEKSystems Contract)"
+    details: "Working with the Engineering IT team to design, build and implement a platform to streamline code and package deployment to both internal and zero-trust partner locations."
+  - position: "Senior Network Engineer, Systems and Design"
+    dates: "2019 - 2020"
+    company: "TOURtech"
+    details: "Building and implementing better systems for deploying the necessary configurations to different types of devices; working with the Field Services team to ensure that on-site issues are handled appropriately and in a timely manner; working on bettering both the customer experience as well as both the on-site and remote administration experience with technology."
+  - position: "DevOps Engineer"
+    dates: "2017 - 2019"
+    company: "BrainGu, LLC"
+    details: "Worked collaboratively with developers, project managers, and upper management to guarantee end products and results that both we and our customers love. Primarily worked on the Structsure Project building out the system architecture and automated deployment and updating functionality of the application being built."
+  - position: "Network Engineer / Manager of IT Services"
+    dates: "2014 - 2017"
+    company: "TOURtech"
+    details: "Worked with both internal and external teams to guarantee success at the events we built and operated. Helped coordinate 50+ shows during my tenure. Built the 'Tech Wiki' for configuration and knowledge management."
+  - position: "Systems Administrator I/II"
+    dates: "2010 - 2014"
+    company: "Production Resource Group"
+    details: "Played a key role in maintaining day-to-day functionality of all networked services (asset management platform, Cisco phones, print services, networked storage, facility access control, security system management, day-to-day hardware/software problems, client and project management, etc.) both locally and nationwide."
+  - position: "Systems Administrator Intern"
+    dates: "Summer 2009"
+    company: "Production Resource Group"
+    details: "Performed day-to-day helpdesk support for the US; built and applied Active Directory schema changes."
+
+projects:
+  - title: "CAPCOM @ TOURtech"
+    url: "https://www.tourtech.com"
+    tagline: "Built out a highly scalable platform, primarily around Open Source Software, to allow simultaneous remote management and support to multiple event sites. This includes CCTV cameras, temporary wired and wireless infrastructure, logging and metrics collection, and integration with on-site radio communications. CAPCOM provides the ability for a less-qualified network technician on multiple event sites while a highly-trained remote Network Engineer can oversee simultaneous live events from a single physical location."
+  - title: "EventBuilder @ TOURtech"
+    url: "https://www.tourtech.com"
+    tagline: "Built an easy-to-use web interface to generate TOURtech specific configuration files for the various hardware used by the organization on a per-event basis. This streamlined configuration management by nearly a full day of work per job."
+  - title: "Structsure @ BrainGu"
+    url: "https://www.structsure.com"
+    tagline: "Compliant Platform-As-A-Service offering simplified deployments of necessary applications for almost any business."
+  - title: "Austin City Limits Music Festival 2015"
+    url: "https://www.aclfestival.com/"
+    tagline: "Designed the network architecture, deployed, and troubleshot both the production networking and AT&T public Wifi for VIP attendees. Successfully provided internet to 80,000+ wired and wireless clients over two weekends of the music festival including POS, Access Control, CCTV, and attendee wifi."
+  - title: "PRG Los Angeles Facility Move"
+    url: "https://www.prg.com/locations/los-angeles"
+    tagline: "Moved from ~80,000 sqft warehouse to a ~135,000 sqft warehouse; performed a full upgrade of all network infrastructure and upgraded desktop clients for office and warehouse use."
+  - title: "PRG New Jersey Facility Move"
+    url: "https://www.prg.com/locations/secaucus"
+    tagline: "Assisted in merging two company locations from Mt. Vernon, NY and North Bergen, NJ into a single facility in Secaucus, NJ. 130+ employees and 90+ workstations migrated, as well as assisting with testing various core systems (Ethernet integrity, paging systems, video security systems)."
+
+locations:
+  - title: "Westchester, NY"
+    tagline: "April 2010 - January 2011"
+  - title: "North Bergen, NJ"
+    tagline: "January 2011 - June 2012"
+  - title: "Los Angeles, CA"
+    tagline: "June 2012 - November 2015"
+  - title: "Raleigh, NC"
+    tagline: "November 2015 - Current"

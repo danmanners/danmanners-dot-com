@@ -1,0 +1,73 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const {
+  title = 'Dan Manners',
+  description = 'Senior Site Reliability, DevOps, and Network Engineer',
+  ga4 = 'G-VXJPJL6RMJ',
+}: {
+  title?: string;
+  description?: string;
+  ga4?: string;
+} = Astro.props;
+
+const pageTitle = title === 'Dan Manners' ? title : `${title} | Dan Manners`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Dark mode bootstrap: apply saved preference before first paint -->
+    <script is:inline>
+      (function () {
+        var cookie = document.cookie.split('; ').find(function (c) {
+          return c.startsWith('theme=');
+        });
+        var saved = cookie ? cookie.split('=')[1] : null;
+        var prefersDark =
+          window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = saved ? saved === 'dark' : prefersDark;
+        if (isDark) document.documentElement.classList.add('dark');
+      })();
+    </script>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Dan Manners" href="/rss.xml" />
+
+    <!-- GA4 -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4}`}></script>
+    <script is:inline define:vars={{ ga4 }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4);
+    </script>
+
+    <!-- HTMX (shared) -->
+    <script is:inline defer src="/htmx.min.js"></script>
+  </head>
+  <body class="min-h-screen bg-white text-slate-800 antialiased dark:bg-slate-950 dark:text-slate-200">
+    <Nav />
+    <main class="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

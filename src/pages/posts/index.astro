@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const blogPosts = (await getCollection('blog')).filter((p) => !p.data.draft);
+const sortedPosts = blogPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title="Posts" description="Blog posts about DevOps, Kubernetes, networking, and more.">
+  <h1 class="mb-6 text-3xl font-bold text-slate-900 dark:text-white">Posts</h1>
+
+  <!-- Search -->
+  <div class="no-print mb-8">
+    <input
+      type="search"
+      id="post-search"
+      placeholder="Search posts..."
+      autocomplete="off"
+      class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm outline-none transition-colors focus:border-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:focus:border-slate-500"
+    />
+    <div id="search-results" class="mt-4 hidden"></div>
+  </div>
+
+  <!-- All posts -->
+  <div id="posts-grid" class="grid gap-4 sm:grid-cols-2">
+    {sortedPosts.map((post) => <PostCard post={post} />)}
+  </div>
+</Layout>
+
+<script is:inline>
+  (function () {
+    var input = document.getElementById('post-search');
+    var results = document.getElementById('search-results');
+    var grid = document.getElementById('posts-grid');
+    if (!input) return;
+
+    var index = null;
+
+    function loadIndex() {
+      if (index) return Promise.resolve(index);
+      return fetch('/search-data.json')
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          index = d.posts || [];
+          return index;
+        });
+    }
+
+    function escapeHtml(s) {
+      var div = document.createElement('div');
+      div.textContent = s;
+      return div.innerHTML;
+    }
+
+    function render(matches) {
+      if (!input.value.trim()) {
+        results.classList.add('hidden');
+        grid.classList.remove('hidden');
+        return;
+      }
+      results.classList.remove('hidden');
+      grid.classList.add('hidden');
+      if (!matches.length) {
+        results.innerHTML =
+          '<p class="text-sm text-slate-500 dark:text-slate-400">No posts found for &ldquo;' +
+          escapeHtml(input.value) + '&rdquo;.</p>';
+        return;
+      }
+      results.innerHTML = matches
+        .map(function (p) {
+          return (
+            '<a href="' + p.url + '" class="group block rounded-xl border border-slate-200 bg-white p-4 transition-all hover:border-slate-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700">' +
+            '<h3 class="font-semibold text-slate-900 group-hover:text-slate-700 dark:text-white">' + escapeHtml(p.title) + '</h3>' +
+            '<p class="mt-1 line-clamp-2 text-sm text-slate-500 dark:text-slate-400">' + escapeHtml(p.excerpt) + '</p>' +
+            '</a>'
+          );
+        })
+        .join('');
+    }
+
+    function search(q) {
+      loadIndex().then(function (posts) {
+        var term = q.toLowerCase();
+        var matches = posts.filter(function (p) {
+          return (
+            p.title.toLowerCase().includes(term) ||
+            (p.tags || []).join(' ').toLowerCase().includes(term) ||
+            (p.categories || []).join(' ').toLowerCase().includes(term) ||
+            (p.excerpt || '').toLowerCase().includes(term)
+          );
+        });
+        render(matches);
+      });
+    }
+
+    input.addEventListener('input', function () {
+      search(input.value);
+    });
+  })();
+</script>
