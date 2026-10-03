@@ -21,21 +21,21 @@ It's 2026. It's not a question of if - it *will* happen again. I sure hope this 
 My homelab is a nine-node Talos Linux Kubernetes cluster behind a UniFi stack, running a self-hosted LLM stack.
 
 ```yaml
-homelab:
-  cluster:
-    os: "Talos Linux"
-    nodes: 9
-  ai_stack:
-    router: "Llama Router"
-    backends:
-      - name: "quantumleap"
-        gpu: "RTX 5090"
-        model: "Qwen3.8-27B-NVFP4 on vLLM"
-      - name: "intel"
-        gpu: "Intel iGPU"
-        model: "vLLM"
-      - name: "mac-mini"
-        chip: "M4 Pro, 48GB"
+cluster:
+  os: "Talos Linux"
+  nodes: 9
+ai_stack:
+  router: "LiteLLM Router" # https://github.com/home-operations/litellm-operator
+  backends:
+    - name: "quantumleap"
+      gpu: "RTX 5090 (32GB)"
+      model: "Qwen3.8-27B-NVFP4 on vLLM"
+    - name: "intellectual"
+      gpu: "Intel ARC B70 Pro (32GB)"
+      model: "google/gemma-4-12B-it on vLLM"
+    - name: "mac-mini"
+      chip: "M4 Pro, 48GB"
+      model: "GPT-OSS 20B on llama.cpp"
 ```
 
 The cluster is managed by my [HELO](https://github.com/GoodMannersHosting/home-enterprise-labops) repo, which is **public on GitHub by design**. It's an educational repo as well as my homelab, and my original tagline is/was "Test Big Ideas in Small Spaces". It's nowhere near the stars I had on my original homelab repo, but it's written to be a reference for anyone looking to set up either a similar cluster or straight rip shit out of it for work purposes.
@@ -45,7 +45,7 @@ The cluster is managed by my [HELO](https://github.com/GoodMannersHosting/home-e
 
 A friend and I were working to get LiteLLM up and running for my homelab, as they use my models as well (self-hosted AI, baybeeeee), and both of our agents running locally were committing under our own git identities. I'm not going to name him, because honestly whose agent it was is completely irrelevant. It had push access to a public repo, and none of the safeties that should have existed were there: no pre-commit secrets scanning, no branch protection, nothing between `git commit` and the internet.
 
-On **September 20th, 2026**, as part of my upgrade and cutting over from `talhelper` to `topf` and upgrading to Kubernetes 1.37, I deprecated `talosctl` and switched cluster management to **TOPF** (Talos Orchestrator by PostFinance). TOPF is a declarative orchestrator, and one of the things it does is render the full cluster configuration — machine configs for all nine nodes — into the repo's working tree under `infrastructure/clusterconfig/`. The AI agent - in its _infinite wisdom_ - decided to render out all cluster configuration _and_ commit everything, including the admin `kubeconfig` and machine configs for all nine nodes. For the next several days, my shit was just _public_ in the repo in a commit.
+On **September 20th, 2026**, as part of my upgrade and cutting over from `talhelper` to `topf` and upgrading to Kubernetes 1.37, I deprecated `talosctl` and switched cluster management to [**TOPF** (Talos Orchestrator by PostFinance)](https://github.com/postfinance/topf). TOPF is a declarative orchestrator, and one of the things it does is render the full cluster configuration — machine configs for all nine nodes — into the repo's working tree under `infrastructure/clusterconfig/`. While my friend was helping me debug things in my cluster, they rendered out the `kubeconfig`, Cluster Config, and Node Config files locally (which, valid). The AI agent then - in its _infinite wisdom_ - decided to commit everything, including the admin `kubeconfig` and machine configs for all nine nodes. For the next several days, my shit was just _public_ in the repo in a commit.
 
 The only "luck" was that the agent had noticed its mistake and cleaned it up before the next commit, so...at least it wasn't "front and center," or something.
 
@@ -63,7 +63,7 @@ The problem was *how* it committed. The agent committed everything in the workin
 
 The worker configs contained join tokens, the Cluster ID secrets, CAs, and functionally a map of my LAN and internal IPs. The three control-plane machine configs went further and contained the **cluster CA private key**, the **aggregator CA key**, the **service-account RSA signing key**, the **etcd CA key**, the **SecretBox encryption secret**, a **second join token**, and the **OIDC config** for the GMH identity realm.
 
-The bigger issue aside from someone being able to join new nodes to my cluster (which, why would they) was the Kubeconfig. If someone did find it (and I have to assume someone or something did), they would have had full cluster admin. They could exfiltrate all of my secrets for external services, they could utilize my AI hosted in my house, they'd be able to do a fair amount of damage and compromise a lot of shit, both inside and outside my homelab.
+The bigger issue aside from someone being able to join new nodes to my cluster was the `kubeconfig`. If someone did find it (and I have to assume someone or something did), they would have had full cluster admin. They could exfiltrate all of my secrets for external services, they could utilize my AI hosted in my house, they'd be able to do a fair amount of damage and compromise a lot of shit, both inside and outside my homelab.
 
 _Cool._
 
@@ -230,8 +230,14 @@ The risks and fuck-ups around local/developer security are so much more tangible
 
 This was a shockingly stupid screw up on our part, but I'm almost glad it happened. The actual blast radius ended up being non-existent, and we were able to quickly and easily fix it once we identified what happened. The agent had also quickly re-committed and removed the `kubeconfig` and other files from the working tree, so that's...good? Basically I haven't found any indicators where anyone actually _did_ anything malicious, but it's terrifying to think a bad actor, script kiddie, or random Agent could have.
 
-But it's fenced in now. It works in the scrubbed copy of the repo. Nothing long-lived lives in any working tree it can touch. And every credential in the stack has a clock on it.
+-----
+
+Ultimately, I ask myself if this would have happened if we weren't using AI.
+
+_No, probably not._
 
 -----
+
+Thank you for the review before posting, [@coolguy1771](https://github.com/coolguy1771).
 
 Feel free to ping me at [daniel.a.manners@gmail.com](mailto:daniel.a.manners@gmail.com). If something I wrote isn't clear, feel free to ask me a question or tell me to update it!
