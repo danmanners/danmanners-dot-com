@@ -1,9 +1,9 @@
 ---
 title: "AI, Secrets, and What Not To Do"
-pubDate: 2026-10-01T12:00:00-04:00
+pubDate: 2026-10-02T12:00:00-04:00
 tags: ["homelab", "ai", "security", "talos", "kubernetes"]
 categories: ["Homelab", "AI", "Security"]
-draft: true
+draft: false
 ---
 
 For six days, anyone on the internet could have taken over my home Kubernetes cluster. The cluster CA, admin client cert, Talos join tokens, etcd keys - the full map of every machine behind my router. All of it, readable by anyone who found the right URL and wanted some free compute.

@@ -12,10 +12,12 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.1",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.1",
+    "remark-github-alerts": "^0.1.1",
     "tailwindcss": "^4.3.3",
     "zod": "^4.5.4"
   },
