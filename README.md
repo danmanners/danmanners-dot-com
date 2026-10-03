@@ -1,43 +1,52 @@
-# Astro Starter Kit: Minimal
+# danmanners.com
+
+Source for [danmanners.com](https://danmanners.com) — personal website with blog, about page, and resume.
+
+Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com).
+
+## Pages
+
+- **Home** (`/`) — recent blog posts
+- **About** (`/about/`) — background, tech stack, and homelab
+- **Posts** (`/posts/`) — full blog index with search
+- **Resume** (`/resume/`) — resume rendered from `src/content/resume/resume.yaml`
+
+## Development
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+astro dev --background
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Manage the background dev server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
-## 🚀 Project Structure
+| Command             | Action                                          |
+| :------------------ | :---------------------------------------------- |
+| `npm run build`     | Build the production site to `./dist/`          |
+| `npm run preview`   | Preview the build locally                       |
+| `npm run astro ...` | Run CLI commands like `astro add`, `astro check` |
 
-Inside of your Astro project, you'll see the following folders and files:
+## Deployment
 
-```text
+Pushing to `main` deploys via GitHub Actions (`.github/workflows/deploy.yml`):
+the site is built with Node 22 and synced to S3 using OIDC credentials.
+
+## Structure
+
+```
 /
-├── public/
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/     # Astro components (Nav, Footer, PostCard, Homelab, ...)
+│   ├── content/
+│   │   ├── blog/       # Markdown blog posts (one file per post)
+│   │   └── resume/     # resume.yaml
+│   ├── data/site.ts    # Site metadata (title, description)
+│   ├── layouts/        # Page layouts
+│   ├── pages/          # Routes (index, about, posts, resume)
+│   └── styles/         # Global CSS
+├── public/             # Static assets (images, favicons, htmx)
+├── astro.config.mjs
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+To add a blog post, create a Markdown file in `src/content/blog/` with `title`, `pubDate`, and `draft` frontmatter.
