@@ -45,7 +45,7 @@ The cluster is managed by my [HELO](https://github.com/GoodMannersHosting/home-e
 
 A friend and I were working to get LiteLLM up and running for my homelab, as they use my models as well (self-hosted AI, baybeeeee), and both of our agents running locally were committing under our own git identities. I'm not going to name him, because honestly whose agent it was is completely irrelevant. It had push access to a public repo, and none of the safeties that should have existed were there: no pre-commit secrets scanning, no branch protection, nothing between `git commit` and the internet.
 
-On **September 20th, 2026**, as part of my upgrade and cutting over from `talhelper` to `topf` and upgrading to Kubernetes 1.37, I deprecated `talosctl` and switched cluster management to [**TOPF** (Talos Orchestrator by PostFinance)](https://github.com/postfinance/topf). TOPF is a declarative orchestrator, and one of the things it does is render the full cluster configuration — machine configs for all nine nodes — into the repo's working tree under `infrastructure/clusterconfig/`. While my friend was helping me debug things in my cluster, they rendered out the `kubeconfig`, Cluster Config, and Node Config files locally (which, valid). The AI agent then - in its _infinite wisdom_ - decided to commit everything, including the admin `kubeconfig` and machine configs for all nine nodes. For the next several days, my shit was just _public_ in the repo in a commit.
+On **September 20th, 2026**, as part of my upgrade to Kubernetes 1.37, I deprecated `talosctl` and switched cluster management to [**TOPF** (Talos Orchestrator by PostFinance)](https://github.com/postfinance/topf). TOPF is a declarative orchestrator, and one of the things it does is render the full cluster configuration - machine configs for all nine nodes - into the repo's working tree under `infrastructure/clusterconfig/`. While my friend was helping me debug things in my cluster, they rendered out the `kubeconfig`, Cluster Config, and Node Config files locally (which, valid). The AI agent then - in its _infinite wisdom_ - decided to commit everything, including the admin `kubeconfig` and machine configs for all nine nodes. For the next several days, my shit was just _public_ in the repo in a commit.
 
 The only "luck" was that the agent had noticed its mistake and cleaned it up before the next commit, so...at least it wasn't "front and center," or something.
 
@@ -120,14 +120,9 @@ The irony is not lost on me. In a blog post about how an AI agent leaked my shit
 
 The exposure window was roughly six days: the push at 6:13 PM on the 20th, through the rotation on the morning of the 26th.
 
-The same weekend, I found a second leak. In my other public repo (`cloud-security-cluster`, my OpenBao infrastructure), the agent had written a GitHub Actions workflow, `bao-sync.yml`, with debug `echo` statements that printed the GitHub OIDC token, the JWT login response, and the full `BAO_TOKEN` into the public Actions logs. This one was secrets in public logs, which is arguably dumber. Hard to call it better or worse, but stupid nonetheless.
+## Sir, a second leak has hit the GitHub Org
 
-```text
-chore: don't do stupid shit and expose tokens     # 14:48
-fix(ci): install bao CLI and stop leaking tokens  # 14:58
-```
-
-The second one adds `::add-mask::` masking for the token and removes the echoes. The first one is just what I call it.
+The same weekend, I found a second leak. In my other public repo (`cloud-security-cluster`, my OpenBao infrastructure), the agent had written a GitHub Actions workflow, `bao-sync.yml`, with debug `echo` statements that printed the GitHub OIDC token, the JWT login response, and the full `BAO_TOKEN` into the public Actions logs. This one was secrets in public logs, which is arguably dumber. Hard to call it better or worse, but stupid nonetheless. The easy correction there was to remove the `echo` statements and use `::add-mask::` masking for the token.
 
 -----
 
@@ -182,7 +177,7 @@ After getting a few hours of sleep and waking up to a terrifying alert from AWS 
 
 While I did review cluster logs and if there had been anything added/modified over the roughly six-day window, I started rotating configs for each of my Kubernetes nodes. "Trust, but Verify" **must** be your default behavior when you're dealing with something like this. I rotated every secret of potential value in the cluster, and double/triple checked that I hadn't missed something in the early hours of the morning.
 
-The OpenBao stuff was easier: the tokens had already expired and we had already tuned how long JWT tokens were valid for (~10m), so the blast radius was minimal - relatively speaking. We adjusted the GitHub Action workflow and corrected the secret leakage.
+In regards to the second leak, the OpenBao stuff was easier to deal with. The tokens had already expired and we had already tuned how long JWT tokens were valid for (~10m), so the blast radius was minimal - relatively speaking. We adjusted the GitHub Action workflow and corrected the secret leakage.
 
 -----
 
@@ -222,7 +217,9 @@ Utilizing skills which enhance and improve your agents awareness to pushing code
 
 Agents write more code, faster, and commit with different (not less) judgment than the humans supervising them. That's not an insult to the agents, it's a numbers game. Good Humans are (hopefully) going to make a bad `git add` once or twice a year. An agent that holds - say, your whole cluster config in its working tree - can do it in the middle of a refactor that is otherwise going fine. The blast radius of one bad `git add` used to be "oops, that's not good and I should fix it" and now is closer to "wait shit it's been up for six days because I wasn't watching my Agent??"
 
-The risks and fuck-ups around local/developer security are so much more tangible in the age of AI. It's easier than ever to commit unwanted code and publish to GitHub, and it's more difficult than ever to find your fuck-ups after the fact. _Yes_, there are tools like [GitGuardian](https://www.gitguardian.com/) (which I do highly recommend, they're awesome), but they're not the only thing you need. Amusingly, we did get an email 
+The risks and fuck-ups around local/developer security are so much more tangible in the age of AI. It's easier than ever to commit unwanted code and publish to GitHub, and it's more difficult than ever to find your fuck-ups after the fact. _Yes_, there are tools like [GitGuardian](https://www.gitguardian.com/) (which I do highly recommend, they're awesome), but they're not the only thing you need. 
+
+Amusingly - we did receive an email from GitGuardian, but by the time we found it in spam we had already identified the issue and fixed it.
 
 -----
 
@@ -273,6 +270,9 @@ _No, probably not._
 -----
 
 > [!NOTE]
-> Thank you for the review before posting, [@coolguy1771](https://github.com/coolguy1771).
+> Thank you for the review before posting, [@coolguy1771](https://github.com/coolguy1771) and James!
+
+> [!NOTE]
+> I used AI ([Self-Hosted NVDIA/Qwen3.8 27B NVFP4](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4)) to scaffold this blog post and to verify timestamps and the sequence of events, but these words, typos, and gramatical errors are my own.
 
 Feel free to add or message me on [LinkedIn](https://www.linkedin.com/in/danielmanners/). If something I wrote isn't clear, feel free to ask me a question or tell me to update it!
