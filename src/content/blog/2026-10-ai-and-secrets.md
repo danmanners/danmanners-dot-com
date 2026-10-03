@@ -222,7 +222,7 @@ Utilizing skills which enhance and improve your agents awareness to pushing code
 
 Agents write more code, faster, and commit with different (not less) judgment than the humans supervising them. That's not an insult to the agents, it's a numbers game. Good Humans are (hopefully) going to make a bad `git add` once or twice a year. An agent that holds - say, your whole cluster config in its working tree - can do it in the middle of a refactor that is otherwise going fine. The blast radius of one bad `git add` used to be "oops, that's not good and I should fix it" and now is closer to "wait shit it's been up for six days because I wasn't watching my Agent??"
 
-The risks and fuck-ups around local/developer security are so much more tangible in the age of AI. It's easier than ever to commit unwanted code and publish to GitHub, and it's more difficult than ever to find your fuck ups after the fact. _Yes_, there are tools like [GitGuardian](https://www.gitguardian.com/) (which I do highly recommend, they're awesome), but they're not the only thing you need. Amusingly, we did get an email 
+The risks and fuck-ups around local/developer security are so much more tangible in the age of AI. It's easier than ever to commit unwanted code and publish to GitHub, and it's more difficult than ever to find your fuck-ups after the fact. _Yes_, there are tools like [GitGuardian](https://www.gitguardian.com/) (which I do highly recommend, they're awesome), but they're not the only thing you need. Amusingly, we did get an email 
 
 -----
 
@@ -238,6 +238,41 @@ _No, probably not._
 
 -----
 
-Thank you for the review before posting, [@coolguy1771](https://github.com/coolguy1771).
+## References In This Post
 
-Feel free to ping me at [daniel.a.manners@gmail.com](mailto:daniel.a.manners@gmail.com). If something I wrote isn't clear, feel free to ask me a question or tell me to update it!
+### GitHub Repositories
+
+- [Home Enterprise LabOps Repo](https://github.com/GoodMannersHosting/home-enterprise-labops)
+- [Talos Orchestrator by PostFinance](https://github.com/postfinance/topf)
+- [`newren/git-filter-repo`](https://github.com/newren/git-filter-repo)
+
+### Pre-Commit Hook Tooling
+
+- [`pre-commit`](https://github.com/pre-commit/pre-commit)
+- [`lefthook`](https://github.com/evilmartians/lefthook)
+
+### Secrets Scanning 
+
+- [Talisman](https://github.com/thoughtworks/talisman)
+- [GitLeaks](https://github.com/gitleaks/gitleaks)
+- [TruffleHog](https://github.com/trufflesecurity/trufflehog)
+
+### AI Agent Security Skills
+
+- [Codeguard](https://github.com/cosai-oasis/project-codeguard)
+
+### Software
+
+- [Zed](https://zed.dev/)
+- [GitGuardian](https://www.gitguardian.com/)
+
+### External Blog Posts
+- [Truffle Security | Anyone can access deleted and private repo data on GitHub](https://trufflesecurity.com/blog/anyone-can-access-deleted-and-private-repo-data-github)
+- ["Pre-commit hooks are back thanks to AI"](https://briandouglas.me/posts/2025/08/27/pre-commit-hooks-are-back-thanks-to-ai/)
+
+-----
+
+> [!NOTE]
+> Thank you for the review before posting, [@coolguy1771](https://github.com/coolguy1771).
+
+Feel free to add or message me on [LinkedIn](https://www.linkedin.com/in/danielmanners/). If something I wrote isn't clear, feel free to ask me a question or tell me to update it!
